@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Light Eco Theme – base layer
+   Sunlit, breathable, optimistic. Warm neutrals + sage/mint/emerald accents.
+--------------------------------------------------------------------------- */
+@layer base {
+  :root {
+    --eco-surface: #fafaf9;
+    --eco-card: #ffffff;
+    --eco-sage: #5a7c59;
+    --eco-mint: #6ee7b7;
+    --eco-emerald: #10b981;
+    --eco-glow: rgba(16, 185, 129, 0.25);
+    --eco-glow-strong: rgba(16, 185, 129, 0.4);
+    --warm-50: #fafaf9;
+    --warm-100: #f5f5f4;
+    --shadow-eco: 0 8px 30px -8px rgba(16, 185, 129, 0.12), 0 12px 40px -12px rgba(0, 0, 0, 0.06);
+    --shadow-eco-lg: 0 20px 50px -16px rgba(16, 185, 129, 0.14), 0 24px 60px -16px rgba(0, 0, 0, 0.08);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Motion system – keyframes
+   Subtle, premium. No flashy motion.
+--------------------------------------------------------------------------- */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 20px -4px var(--eco-glow);
+  }
+  50% {
+    opacity: 0.95;
+    box-shadow: 0 0 28px -2px var(--eco-glow-strong);
+  }
+}
+
+@keyframes pulseDot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes progressRing {
+  0% {
+    stroke-dashoffset: 283;
+  }
+  100% {
+    stroke-dashoffset: var(--ring-offset, 70);
+  }
+}
+
+@keyframes sparkDraw {
+  0% {
+    stroke-dashoffset: 120;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes countUp {
+  0% {
+    opacity: 0.6;
+    transform: translateY(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Utility classes for animations */
+.animate-fade-in {
+  animation: fadeIn 0.45s ease-out forwards;
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 2.5s ease-in-out infinite;
+}
+
+.animate-pulse-dot {
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+.animate-spark-draw {
+  animation: sparkDraw 1.4s ease-out forwards;
+}
+
+.animate-count-up {
+  animation: countUp 0.5s ease-out forwards;
+}
+
+/* Stagger children for sequential fade-in */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
